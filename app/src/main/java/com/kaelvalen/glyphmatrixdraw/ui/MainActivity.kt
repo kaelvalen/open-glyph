@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private val animationGalleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        // Animation gallery is for viewing/editing animations, no return data needed
+    }
+
     private val importLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val pixels = result.data?.getIntArrayExtra(ImageImportActivity.EXTRA_PIXELS) ?: return@registerForActivityResult
@@ -110,6 +114,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnInvert.setOnClickListener { binding.pixelGridView.invertAll() }
 
+        binding.btnFill.setOnClickListener { binding.pixelGridView.fillAll() }
+
         binding.btnApplyFreehand.setOnClickListener {
             val pixels = binding.freehandCanvasView.toPixelArray()
             binding.pixelGridView.setPixels(pixels)
@@ -128,7 +134,7 @@ class MainActivity : AppCompatActivity() {
             galleryLauncher.launch(Intent(this, GalleryActivity::class.java))
         }
         binding.btnAnimation.setOnClickListener {
-            startActivity(Intent(this, AnimationEditorActivity::class.java))
+            animationGalleryLauncher.launch(Intent(this, AnimationGalleryActivity::class.java))
         }
         binding.btnImport.setOnClickListener {
             importLauncher.launch(Intent(this, ImageImportActivity::class.java))

@@ -98,7 +98,7 @@
             android:id="@+id/btnImport"
             android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:text="IMPORT"
+            android:text="@string/import_btn"
             android:textColor="#888888"
             android:textSize="9sp"
             android:letterSpacing="0.15"
@@ -208,6 +208,21 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="INVERT"
+                android:textColor="#555555"
+                android:textSize="9sp"
+                android:letterSpacing="0.2"
+                android:fontFamily="monospace"
+                android:gravity="center" />
+
+            <View android:layout_width="1dp" android:layout_height="16dp"
+                android:layout_gravity="center_vertical" android:background="#222222" />
+
+            <TextView
+                android:id="@+id/btnFill"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="FILL"
                 android:textColor="#555555"
                 android:textSize="9sp"
                 android:letterSpacing="0.2"

@@ -35,6 +35,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.AnimationGalleryActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.ImageImportActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

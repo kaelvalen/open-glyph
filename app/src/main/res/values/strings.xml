@@ -3,4 +3,51 @@
     <string name="app_name">GlyphDraw</string>
     <string name="toy_name">Glyph Draw</string>
     <string name="toy_summary">Project your drawing to Glyph Matrix</string>
+    
+    <!-- Main Activity -->
+    <string name="mode_grid">GRID</string>
+    <string name="mode_freehand">FREE</string>
+    <string name="gallery">GALLERY</string>
+    <string name="animation">ANIMATION</string>
+    <string name="import_btn">IMPORT</string>
+    <string name="brightness">BRIGHTNESS</string>
+    <string name="erase">ERASE</string>
+    <string name="draw">✏️ Draw</string>
+    <string name="invert">INVERT</string>
+    <string name="clear">CLEAR</string>
+    <string name="apply_to_grid">APPLY TO GRID</string>
+    <string name="send_to_glyph">SEND TO GLYPH</string>
+    <string name="saved">Saved ✓ Select from the Glyph button</string>
+    <string name="loaded">Loaded</string>
+    
+    <!-- Gallery Activity -->
+    <string name="gallery_title">GALLERY</string>
+    <string name="new_pattern">+ NEW PATTERN</string>
+    <string name="save_current_drawing">Save current drawing</string>
+    <string name="pattern_name_hint">Pattern name</string>
+    <string name="pattern_default_name">Pattern %d</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirm">Delete \"%s\"?</string>
+    <string name="deleted">Deleted</string>
+    <string name="load">LOAD</string>
+    
+    <!-- Animation Editor -->
+    <string name="animation_title">ANIMATION</string>
+    <string name="back">← BACK</string>
+    <string name="animation_name_hint">Animation name</string>
+    <string name="delay">DELAY</string>
+    <string name="add_frame">+ FRAME</string>
+    <string name="duplicate_frame">⧉ DUPLICATE</string>
+    <string name="delete_frame">✕ FRAME</string>
+    <string name="play">▶ PLAY</string>
+    <string name="stop">⏹ STOP</string>
+    <string name="at_least_one_frame">At least 1 frame is required</string>
+    
+    <!-- Image Import -->
+    <string name="image_import_title">IMAGE IMPORT</string>
+    <string name="pick_from_gallery">PICK FROM GALLERY</string>
+    <string name="camera">CAMERA</string>
+    <string name="select_image">Select image</string>
+    <string name="threshold">THRESHOLD</string>
+    <string name="apply_to_grid_btn">APPLY → GRID</string>
 </resources>

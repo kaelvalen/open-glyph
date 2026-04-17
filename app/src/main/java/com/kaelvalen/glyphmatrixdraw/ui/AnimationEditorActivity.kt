@@ -18,6 +18,10 @@ import kotlinx.coroutines.launch
 
 class AnimationEditorActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_LOAD_ANIMATION_ID = "load_animation_id"
+    }
+
     private lateinit var binding: ActivityAnimationEditorBinding
     private lateinit var frameAdapter: FrameAdapter
 
@@ -62,6 +66,12 @@ class AnimationEditorActivity : AppCompatActivity() {
 
         binding.etAnimName.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) { binding.etAnimName.clearFocus(); true } else false
+        }
+
+        // Load animation if provided
+        val animId = intent.getStringExtra(EXTRA_LOAD_ANIMATION_ID)
+        if (animId != null) {
+            loadAnimation(animId)
         }
     }
 
@@ -131,5 +141,15 @@ class AnimationEditorActivity : AppCompatActivity() {
         AnimationStore.save(this, anim)
         ActiveState.setAnimation(this, currentAnimId)
         Toast.makeText(this, "Saved ✓ Select from the Glyph button", Toast.LENGTH_LONG).show()
+    }
+
+    private fun loadAnimation(animId: String) {
+        val anim = AnimationStore.get(this, animId) ?: return
+        currentAnimId = anim.id
+        binding.etAnimName.setText(anim.name)
+        binding.seekDelay.progress = delayToSeek(anim.delayMs)
+        binding.tvDelayMs.text = "${anim.delayMs}ms"
+        frameAdapter.submit(anim.frames, 0)
+        binding.animPixelGrid.setPixels(anim.frames.firstOrNull() ?: IntArray(625))
     }
 }
