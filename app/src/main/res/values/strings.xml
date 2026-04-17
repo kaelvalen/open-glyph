@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GlyphDraw</string>
+    <string name="toy_name">Glyph Draw</string>
+    <string name="toy_summary">Çizimini Glyph Matrix\'e yansıt</string>
+</resources>

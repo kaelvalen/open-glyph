@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D0D"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvImportTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESIM IMPORT"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:letterSpacing="0.2"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnImportBack"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="← GERİ"
+        android:textColor="#888888"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Source buttons -->
+    <LinearLayout
+        android:id="@+id/sourceRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvImportTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnPickGallery"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="GALERİDEN SEÇ"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="#2A2A2A" />
+
+        <Button
+            android:id="@+id/btnPickCamera"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="KAMERA"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="#2A2A2A" />
+
+    </LinearLayout>
+
+    <!-- Preview -->
+    <FrameLayout
+        android:id="@+id/importPreviewContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/sourceRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thresholdRow"
+        app:layout_constraintDimensionRatio="1:1">
+
+        <com.kaelvalen.glyphmatrixdraw.ui.PixelGridView
+            android:id="@+id/importPixelGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tvImportHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Resim seç"
+            android:textColor="#444444"
+            android:textSize="14sp"
+            android:fontFamily="monospace" />
+
+    </FrameLayout>
+
+    <!-- Threshold row -->
+    <LinearLayout
+        android:id="@+id/thresholdRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/importPreviewContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EŞİK"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekThreshold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="50"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvThresholdVal"
+            android:layout_width="44dp"
+            android:layout_height="wrap_content"
+            android:text="50%"
+            android:textColor="#888888"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Brightness row -->
+    <LinearLayout
+        android:id="@+id/brightnessRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/thresholdRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PARLAKLIK"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekBrightnessImport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="400"
+            android:progress="100"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvBrightnessImportVal"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="×1.00"
+            android:textColor="#888888"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Confirm button -->
+    <Button
+        android:id="@+id/btnImportConfirm"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:text="ONAYLA → GRID"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"
+        android:backgroundTint="#FFFFFF"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/brightnessRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
