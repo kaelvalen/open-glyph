@@ -84,6 +84,7 @@ class FreehandCanvasView @JvmOverloads constructor(
                 invalidate()
             }
             MotionEvent.ACTION_UP -> {
+                performClick()
                 drawPath.lineTo(x, y)
                 drawCanvas?.drawPath(drawPath, strokePaint)
                 drawPath.reset()
@@ -92,6 +93,11 @@ class FreehandCanvasView @JvmOverloads constructor(
                 onDrawingChanged?.invoke(toPixelArray())
             }
         }
+        return true
+    }
+
+    override fun performClick(): Boolean {
+        super.performClick()
         return true
     }
 

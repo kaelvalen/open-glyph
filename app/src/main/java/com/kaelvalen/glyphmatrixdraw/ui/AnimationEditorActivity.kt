@@ -5,6 +5,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.kaelvalen.glyphmatrixdraw.R
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kaelvalen.glyphmatrixdraw.databinding.ActivityAnimationEditorBinding
@@ -51,7 +52,7 @@ class AnimationEditorActivity : AppCompatActivity() {
 
         binding.seekDelay.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(sb: SeekBar?, p: Int, fromUser: Boolean) {
-                binding.tvDelayMs.text = "${seekToDelay(p)}ms"
+                binding.tvDelayMs.text = getString(R.string.delay_ms_format, seekToDelay(p))
             }
             override fun onStartTrackingTouch(sb: SeekBar?) {}
             override fun onStopTrackingTouch(sb: SeekBar?) {}
@@ -117,7 +118,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         val frames = frameAdapter.getFrames()
         if (frames.isEmpty()) return
         isPlaying = true
-        binding.btnPlayAnim.text = "⏹ STOP"
+        binding.btnPlayAnim.text = getString(R.string.stop)
         val delayMs = seekToDelay(binding.seekDelay.progress).toLong()
         previewJob = lifecycleScope.launch {
             var idx = 0
@@ -132,7 +133,7 @@ class AnimationEditorActivity : AppCompatActivity() {
     private fun stopPreview() {
         previewJob?.cancel(); previewJob = null
         isPlaying = false
-        binding.btnPlayAnim.text = "▶ PLAY"
+        binding.btnPlayAnim.text = getString(R.string.play)
     }
 
     private fun sendToGlyph() {
@@ -148,7 +149,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         currentAnimId = anim.id
         binding.etAnimName.setText(anim.name)
         binding.seekDelay.progress = delayToSeek(anim.delayMs)
-        binding.tvDelayMs.text = "${anim.delayMs}ms"
+        binding.tvDelayMs.text = getString(R.string.delay_ms_format, anim.delayMs)
         frameAdapter.submit(anim.frames, 0)
         binding.animPixelGrid.setPixels(anim.frames.firstOrNull() ?: IntArray(625))
     }

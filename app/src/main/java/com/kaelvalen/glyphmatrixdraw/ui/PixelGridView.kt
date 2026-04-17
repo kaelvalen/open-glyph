@@ -114,8 +114,16 @@ class PixelGridView @JvmOverloads constructor(
                 paintAtPosition(event.x, event.y, toggle = true)
             }
             MotionEvent.ACTION_MOVE -> paintAtPosition(event.x, event.y, toggle = false)
-            MotionEvent.ACTION_UP   -> onPixelsChanged?.invoke(pixels.clone())
+            MotionEvent.ACTION_UP   -> {
+                performClick()
+                onPixelsChanged?.invoke(pixels.clone())
+            }
         }
+        return true
+    }
+
+    override fun performClick(): Boolean {
+        super.performClick()
         return true
     }
 

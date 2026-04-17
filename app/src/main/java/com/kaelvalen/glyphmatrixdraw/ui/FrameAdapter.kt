@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kaelvalen.glyphmatrixdraw.R
 import com.kaelvalen.glyphmatrixdraw.databinding.ItemFrameBinding
 
 class FrameAdapter(
@@ -47,7 +48,7 @@ class FrameAdapter(
     inner class VH(private val b: ItemFrameBinding) : RecyclerView.ViewHolder(b.root) {
         fun bind(pixels: IntArray, index: Int) {
             b.imgFrameThumb.setImageBitmap(pixels.toThumbnail())
-            b.tvFrameIndex.text = "${index + 1}"
+            b.tvFrameIndex.text = (index + 1).toString()
             b.frameSelectedBorder.visibility = if (index == selectedIndex) View.VISIBLE else View.GONE
             b.root.setOnClickListener { onClick(index) }
         }

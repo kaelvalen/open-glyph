@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.kaelvalen.glyphmatrixdraw.R
 import com.kaelvalen.glyphmatrixdraw.databinding.ActivityMainBinding
 import com.kaelvalen.glyphmatrixdraw.glyph.ActiveState
 import com.kaelvalen.glyphmatrixdraw.glyph.GlyphController
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 val brightness = progress / 100f
                 viewModel.updateBrightness(brightness)
                 binding.pixelGridView.brightness = brightness
-                binding.tvBrightness.text = "$progress%"
+                binding.tvBrightness.text = getString(R.string.brightness_percent_format, progress)
                 PixelStore.save(this@MainActivity, viewModel.currentPixels.value ?: IntArray(625), brightness)
             }
             override fun onStartTrackingTouch(sb: SeekBar?) {}
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             PixelStore.save(this, pixels, brightness)
             ActiveState.setStatic(this, null)
             if (glyphController.isReady()) glyphController.sendFrame(pixels, brightness)
-            Toast.makeText(this, "Saved ✓ Select from the Glyph button", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.saved, Toast.LENGTH_LONG).show()
         }
 
         binding.btnClear.setOnClickListener {
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             val isErase = !binding.pixelGridView.eraseMode
             binding.pixelGridView.eraseMode = isErase
             binding.btnErase.alpha = if (isErase) 1.0f else 0.5f
-            binding.btnErase.text = if (isErase) "✏️ Draw" else "⬜ Erase"
+            binding.btnErase.text = if (isErase) getString(R.string.draw) else getString(R.string.erase)
         }
 
         binding.btnInvert.setOnClickListener { binding.pixelGridView.invertAll() }
@@ -148,10 +149,10 @@ class MainActivity : AppCompatActivity() {
         binding.pixelGridView.brightness = brightness
         val progress = (brightness * 100).toInt()
         binding.seekBrightness.progress = progress
-        binding.tvBrightness.text = "$progress%"
+        binding.tvBrightness.text = getString(R.string.brightness_percent_format, progress)
         PixelStore.save(this, pixels, brightness)
         viewModel.switchMode(MainViewModel.DrawMode.GRID)
-        Toast.makeText(this, "Loaded", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.loaded, Toast.LENGTH_SHORT).show()
     }
 
     private fun observeViewModel() {

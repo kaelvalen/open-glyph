@@ -1,10 +1,12 @@
 package com.kaelvalen.glyphmatrixdraw.ui
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kaelvalen.glyphmatrixdraw.R
 import com.kaelvalen.glyphmatrixdraw.databinding.ItemAnimationBinding
 import com.kaelvalen.glyphmatrixdraw.glyph.Anim
 
@@ -32,7 +34,7 @@ class AnimationAdapter(
         fun bind(a: Anim) {
             b.tvAnimationName.text = a.name
             b.tvAnimationFrames.text = "${a.frames.size} frames"
-            b.tvAnimationDelay.text = "${a.delayMs}ms"
+            b.tvAnimationDelay.text = b.root.context.getString(R.string.delay_ms_format, a.delayMs)
             b.imgAnimationThumb.setImageBitmap(a.frames.firstOrNull()?.toThumbnail())
             b.btnLoadAnimation.setOnClickListener { onLoad(a) }
             b.btnDeleteAnimation.setOnClickListener { onDelete(a) }

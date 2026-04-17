@@ -12,6 +12,7 @@ import android.widget.SeekBar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import com.kaelvalen.glyphmatrixdraw.R
 import com.kaelvalen.glyphmatrixdraw.databinding.ActivityImageImportBinding
 import java.io.File
 
@@ -63,13 +64,8 @@ class ImageImportActivity : AppCompatActivity() {
     }
 
     private fun loadUri(uri: Uri) {
-        val bmp = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-            ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, uri)) { decoder, _, _ ->
-                decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
-            }
-        } else {
-            @Suppress("DEPRECATION")
-            MediaStore.Images.Media.getBitmap(contentResolver, uri)
+        val bmp = ImageDecoder.decodeBitmap(ImageDecoder.createSource(contentResolver, uri)) { decoder, _, _ ->
+            decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
         }
         sourceBitmap = cropToSquare(bmp)
         redraw(sourceBitmap!!)
@@ -96,8 +92,8 @@ class ImageImportActivity : AppCompatActivity() {
 
     private fun updateLabels() {
         val b = binding.seekBrightnessImport.progress / 100f
-        binding.tvBrightnessImportVal.text = "×%.2f".format(b)
-        binding.tvThresholdVal.text = "${binding.seekThreshold.progress}%"
+        binding.tvBrightnessImportVal.text = getString(R.string.brightness_value_format, b)
+        binding.tvThresholdVal.text = getString(R.string.threshold_value_format, binding.seekThreshold.progress)
     }
 
     private fun cropToSquare(bmp: Bitmap): Bitmap {

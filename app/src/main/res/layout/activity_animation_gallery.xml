@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="ANIMATIONS"
+            android:text="@string/animations_title"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             android:letterSpacing="0.3"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:text="✕"
+            android:text="@string/close"
             android:textColor="#666666"
             android:textSize="18sp"
             android:padding="8dp" />

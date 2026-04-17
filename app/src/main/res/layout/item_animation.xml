@@ -13,7 +13,8 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:scaleType="fitXY"
-        android:background="#111111" />
+        android:background="#111111"
+        android:contentDescription="@string/animation_thumb_desc" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -53,7 +54,7 @@
         android:id="@+id/btnLoadAnimation"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:text="LOAD"
+        android:text="@string/load"
         android:textColor="#FFFFFF"
         android:textSize="9sp"
         android:letterSpacing="0.2"
@@ -67,7 +68,7 @@
         android:id="@+id/btnDeleteAnimation"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:text="✕"
+        android:text="@string/close"
         android:textColor="#444444"
         android:textSize="14sp"
         android:gravity="center" />

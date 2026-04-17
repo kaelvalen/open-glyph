@@ -25,7 +25,6 @@
     <string name="new_pattern">+ NEW PATTERN</string>
     <string name="save_current_drawing">Save current drawing</string>
     <string name="pattern_name_hint">Pattern name</string>
-    <string name="pattern_default_name">Pattern %d</string>
     <string name="delete">Delete</string>
     <string name="delete_confirm">Delete \"%s\"?</string>
     <string name="deleted">Deleted</string>
@@ -50,4 +49,19 @@
     <string name="select_image">Select image</string>
     <string name="threshold">THRESHOLD</string>
     <string name="apply_to_grid_btn">APPLY → GRID</string>
+    <string name="brightness_value_format">×%.2f</string>
+    <string name="threshold_value_format">%d%%</string>
+    <string name="brightness_percent_format">%d%%</string>
+    <string name="delay_ms_format">%dms</string>
+    <string name="pattern_name_format">Pattern %d</string>
+    <string name="fill">FILL</string>
+    <string name="glyph_draw_title">GLYPH DRAW</string>
+    <string name="animations_title">ANIMATIONS</string>
+    <string name="close">✕</string>
+    <string name="default_brightness">100%</string>
+    <string name="default_threshold">50%</string>
+    <string name="default_delay">250ms</string>
+    <string name="frame_thumb_desc">Frame thumbnail</string>
+    <string name="pattern_thumb_desc">Pattern thumbnail</string>
+    <string name="animation_thumb_desc">Animation thumbnail</string>
 </resources>

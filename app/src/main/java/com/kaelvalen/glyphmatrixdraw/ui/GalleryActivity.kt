@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.kaelvalen.glyphmatrixdraw.R
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kaelvalen.glyphmatrixdraw.databinding.ActivityGalleryBinding
@@ -61,14 +62,14 @@ class GalleryActivity : AppCompatActivity() {
 
     private fun confirmDelete(pattern: Pattern) {
         AlertDialog.Builder(this)
-            .setTitle("Delete")
-            .setMessage("Delete \"${pattern.name}\"?")
-            .setPositiveButton("Delete") { _, _ ->
+            .setTitle(R.string.delete)
+            .setMessage(getString(R.string.delete_confirm, pattern.name))
+            .setPositiveButton(R.string.delete) { _, _ ->
                 PatternStore.delete(this, pattern.id)
                 refresh()
-                Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.deleted, Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
 
@@ -76,19 +77,19 @@ class GalleryActivity : AppCompatActivity() {
         val current = PixelStore.loadPixels(this)
         val brightness = PixelStore.loadBrightness(this)
         val input = EditText(this).apply {
-            hint = "Pattern name"
-            setText("Pattern ${PatternStore.getAll(this@GalleryActivity).size + 1}")
+            hint = getString(R.string.pattern_name_hint)
+            setText(getString(R.string.pattern_name_format, PatternStore.getAll(this@GalleryActivity).size + 1))
         }
         AlertDialog.Builder(this)
-            .setTitle("Save current drawing")
+            .setTitle(R.string.save_current_drawing)
             .setView(input)
-            .setPositiveButton("Save") { _, _ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 val name = input.text.toString().ifBlank { "Pattern" }
                 PatternStore.save(this, Pattern(PatternStore.newId(), name, current, brightness))
                 refresh()
-                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
 }
