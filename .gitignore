@@ -30,6 +30,7 @@ captures/
 *.jks
 *.keystore
 key.properties
+keystore.properties
 
 # Logs and OS files
 *.log
