@@ -61,14 +61,14 @@ class GalleryActivity : AppCompatActivity() {
 
     private fun confirmDelete(pattern: Pattern) {
         AlertDialog.Builder(this)
-            .setTitle("Sil")
-            .setMessage("\"${pattern.name}\" silinsin mi?")
-            .setPositiveButton("Sil") { _, _ ->
+            .setTitle("Delete")
+            .setMessage("Delete \"${pattern.name}\"?")
+            .setPositiveButton("Delete") { _, _ ->
                 PatternStore.delete(this, pattern.id)
                 refresh()
-                Toast.makeText(this, "Silindi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("İptal", null)
+            .setNegativeButton("Cancel", null)
             .show()
     }
 
@@ -76,19 +76,19 @@ class GalleryActivity : AppCompatActivity() {
         val current = PixelStore.loadPixels(this)
         val brightness = PixelStore.loadBrightness(this)
         val input = EditText(this).apply {
-            hint = "Pattern adı"
+            hint = "Pattern name"
             setText("Pattern ${PatternStore.getAll(this@GalleryActivity).size + 1}")
         }
         AlertDialog.Builder(this)
-            .setTitle("Mevcut çizimi kaydet")
+            .setTitle("Save current drawing")
             .setView(input)
-            .setPositiveButton("Kaydet") { _, _ ->
+            .setPositiveButton("Save") { _, _ ->
                 val name = input.text.toString().ifBlank { "Pattern" }
                 PatternStore.save(this, Pattern(PatternStore.newId(), name, current, brightness))
                 refresh()
-                Toast.makeText(this, "Kaydedildi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("İptal", null)
+            .setNegativeButton("Cancel", null)
             .show()
     }
 }

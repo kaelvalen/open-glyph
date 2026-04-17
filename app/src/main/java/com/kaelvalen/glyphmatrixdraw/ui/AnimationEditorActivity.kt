@@ -92,7 +92,7 @@ class AnimationEditorActivity : AppCompatActivity() {
 
     private fun deleteFrame() {
         val frames = frameAdapter.getFrames().toMutableList()
-        if (frames.size <= 1) { Toast.makeText(this, "En az 1 kare olmalı", Toast.LENGTH_SHORT).show(); return }
+        if (frames.size <= 1) { Toast.makeText(this, "At least 1 frame is required", Toast.LENGTH_SHORT).show(); return }
         frames.removeAt(frameAdapter.selectedIndex)
         val newIdx = (frameAdapter.selectedIndex - 1).coerceAtLeast(0)
         frameAdapter.submit(frames, newIdx)
@@ -107,7 +107,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         val frames = frameAdapter.getFrames()
         if (frames.isEmpty()) return
         isPlaying = true
-        binding.btnPlayAnim.text = "⏹ DUR"
+        binding.btnPlayAnim.text = "⏹ STOP"
         val delayMs = seekToDelay(binding.seekDelay.progress).toLong()
         previewJob = lifecycleScope.launch {
             var idx = 0
@@ -122,14 +122,14 @@ class AnimationEditorActivity : AppCompatActivity() {
     private fun stopPreview() {
         previewJob?.cancel(); previewJob = null
         isPlaying = false
-        binding.btnPlayAnim.text = "▶ OYNAT"
+        binding.btnPlayAnim.text = "▶ PLAY"
     }
 
     private fun sendToGlyph() {
-        val name = binding.etAnimName.text.toString().ifBlank { "Animasyon" }
+        val name = binding.etAnimName.text.toString().ifBlank { "Animation" }
         val anim = Anim(currentAnimId, name, seekToDelay(binding.seekDelay.progress), frameAdapter.getFrames())
         AnimationStore.save(this, anim)
         ActiveState.setAnimation(this, currentAnimId)
-        Toast.makeText(this, "Kaydedildi ✓ Glyph butonundan seç", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Saved ✓ Select from the Glyph button", Toast.LENGTH_LONG).show()
     }
 }

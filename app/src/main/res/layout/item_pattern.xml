@@ -29,7 +29,7 @@
         android:id="@+id/btnLoadPattern"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:text="YÜKLE"
+        android:text="LOAD"
         android:textColor="#FFFFFF"
         android:textSize="9sp"
         android:letterSpacing="0.2"

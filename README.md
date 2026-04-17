@@ -1,34 +1,34 @@
 # GlyphMatrixDraw
 
-Nothing Phone (3) için 25×25 Glyph Matrix çizim uygulaması.
+A 25x25 Glyph Matrix drawing app for Nothing Phone (3).
 
-## Kurulum
+## Setup
 
-### 1. SDK'yı ekle
-`glyph-matrix-sdk-2.0.aar` dosyasını [GlyphMatrix-Developer-Kit](https://github.com/Nothing-Developer-Programme/GlyphMatrix-Developer-Kit) reposundan indir.
-`app/libs/` klasörüne koy.
+### 1. Add the SDK
+Download `glyph-matrix-sdk-2.0.aar` from the [GlyphMatrix-Developer-Kit](https://github.com/Nothing-Developer-Programme/GlyphMatrix-Developer-Kit) repository.
+Place it in `app/libs/`.
 
-### 2. Debug modu (Nothing Phone (3) gerekmez geliştirme aşamasında)
+### 2. Debug mode (Nothing Phone (3) not required during development)
 ```bash
 adb shell settings put global nt_glyph_interface_debug_enable 1
 ```
-48 saat sonra otomatik kapanır.
+Automatically disables after 48 hours.
 
 ### 3. Build
 ```
 ./gradlew assembleDebug
 ```
 
-## Özellikler
+## Features
 
 | | |
 |---|---|
-| **Grid Modu** | 25×25 piksel editör, tap/drag ile çiz |
-| **Freehand Modu** | Serbest çizim → 25×25 threshold dönüşümü |
-| **Grid'e Aktar** | Freehand çizimi grid'e taşı, piksel düzelt |
-| **Brightness** | LED yoğunluğu 0–100% |
-| **Invert** | Tüm pikselleri ters çevir |
-| **Glyph'e Gönder** | `GlyphMatrixManager.setMatrixFrame()` ile doğrudan push |
+| **Grid Mode** | Draw in a 25x25 pixel editor using tap/drag |
+| **Freehand Mode** | Free drawing -> 25x25 threshold conversion |
+| **Apply to Grid** | Move freehand drawing into the grid for pixel-level fixes |
+| **Brightness** | LED intensity 0-100% |
+| **Invert** | Invert all pixels |
+| **Send to Glyph** | Direct push with `GlyphMatrixManager.setMatrixFrame()` |
 
 ## Mimari
 
@@ -40,9 +40,9 @@ MainViewModel         → Mode, pixels, brightness state
 MainActivity          → View binding, observer pattern
 ```
 
-## Notlar
+## Notes
 
-- `minSdk 33` — Android 14 zorunlu (Glyph SDK kısıtı)
-- Sadece **foreground** uygulamalar Glyph'e erişebilir
-- Production için `AndroidManifest.xml`'deki `"test"` key'i gerçek API key ile değiştir
-- Phone (4a) Pro için `Common.DEVICE_23112` → `Common.DEVICE_25111p` ve matrix length 25 → 13
+- `minSdk 33` - Android 14 is required (Glyph SDK constraint)
+- Only **foreground** apps can access Glyph
+- For production, replace the `"test"` key in `AndroidManifest.xml` with a real API key
+- For Phone (4a) Pro, switch `Common.DEVICE_23112` -> `Common.DEVICE_25111p` and matrix length 25 -> 13

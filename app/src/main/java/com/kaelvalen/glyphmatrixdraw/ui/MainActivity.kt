@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             PixelStore.save(this, pixels, brightness)
             ActiveState.setStatic(this, null)
             if (glyphController.isReady()) glyphController.sendFrame(pixels, brightness)
-            Toast.makeText(this, "Kaydedildi ✓ Glyph butonundan seç", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Saved ✓ Select from the Glyph button", Toast.LENGTH_LONG).show()
         }
 
         binding.btnClear.setOnClickListener {
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             val isErase = !binding.pixelGridView.eraseMode
             binding.pixelGridView.eraseMode = isErase
             binding.btnErase.alpha = if (isErase) 1.0f else 0.5f
-            binding.btnErase.text = if (isErase) "✏️ Çiz" else "⬜ Sil"
+            binding.btnErase.text = if (isErase) "✏️ Draw" else "⬜ Erase"
         }
 
         binding.btnInvert.setOnClickListener { binding.pixelGridView.invertAll() }
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         binding.tvBrightness.text = "$progress%"
         PixelStore.save(this, pixels, brightness)
         viewModel.switchMode(MainViewModel.DrawMode.GRID)
-        Toast.makeText(this, "Yüklendi", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Loaded", Toast.LENGTH_SHORT).show()
     }
 
     private fun observeViewModel() {

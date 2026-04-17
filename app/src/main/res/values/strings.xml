@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">GlyphDraw</string>
     <string name="toy_name">Glyph Draw</string>
-    <string name="toy_summary">Çizimini Glyph Matrix\'e yansıt</string>
+    <string name="toy_summary">Project your drawing to Glyph Matrix</string>
 </resources>
