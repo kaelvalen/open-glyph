@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GlyphDraw</string>
+    <string name="toy_name">Glyph Draw</string>
+    <string name="toy_summary">Çiziminizi Glyph Matrix\'e yansıtın</string>
+
+    <string name="glyph_draw_title">GLYPH DRAW</string>
+    <string name="mode_grid">PİKSEL</string>
+    <string name="mode_freehand">SERBEST</string>
+    <string name="gallery">GALERİ</string>
+    <string name="animation">ANİMASYON</string>
+    <string name="import_btn">İÇE AKTAR</string>
+    <string name="text_btn">METİN</string>
+    <string name="effects_btn">EFEKT</string>
+    <string name="settings_btn">DAHA</string>
+
+    <string name="brightness">PARLAKLIK</string>
+    <string name="intensity">YOĞUNLUK</string>
+    <string name="erase">SİL</string>
+    <string name="draw">ÇİZ</string>
+    <string name="invert">TERS ÇEVİR</string>
+    <string name="clear">TEMİZLE</string>
+    <string name="fill">DOLDUR</string>
+    <string name="apply_to_grid">GRİD\'E UYGULA</string>
+    <string name="send_to_glyph">GLYPH\'E GÖNDER</string>
+    <string name="save_to_gallery">KAYDET</string>
+    <string name="saved">Kaydedildi. Glyph tuşundan Glyph Draw\'u seç.</string>
+    <string name="loaded">Yüklendi</string>
+    <string name="undo">GERİ AL</string>
+    <string name="redo">İLERİ</string>
+
+    <string name="tool_pen">KALEM</string>
+    <string name="tool_eraser">SİL</string>
+    <string name="tool_fill">DOLDUR</string>
+    <string name="tool_line">ÇİZGİ</string>
+    <string name="tool_rect">ÇERÇ</string>
+    <string name="tool_rect_fill">KUTU</string>
+    <string name="tool_circle">DAİRE</string>
+    <string name="tool_circle_fill">DİSK</string>
+    <string name="tool_dropper">SEÇ</string>
+
+    <string name="sym_none">SİM: KPLI</string>
+    <string name="sym_h">SİM: Y</string>
+    <string name="sym_v">SİM: D</string>
+    <string name="sym_both">SİM: YD</string>
+    <string name="sym_quad">SİM: 8×</string>
+
+    <string name="flip_h">ÇEVİR ↔</string>
+    <string name="flip_v">ÇEVİR ↕</string>
+    <string name="rotate_cw">DÖNDÜR 90°</string>
+    <string name="shift_left">←</string>
+    <string name="shift_right">→</string>
+    <string name="shift_up">↑</string>
+    <string name="shift_down">↓</string>
+    <string name="favorite_on">★</string>
+    <string name="favorite_off">☆</string>
+    <string name="close">✕</string>
+
+    <string name="gallery_title">GALERİ</string>
+    <string name="new_pattern">+ MEVCUDU KAYDET</string>
+    <string name="save_current_drawing">Mevcut çizimi kaydet</string>
+    <string name="pattern_name_hint">Desen adı</string>
+    <string name="rename">Adını değiştir</string>
+    <string name="rename_title">Yeniden adlandır</string>
+    <string name="delete">Sil</string>
+    <string name="delete_confirm">\"%s\" silinsin mi?</string>
+    <string name="deleted">Silindi</string>
+    <string name="load">YÜKLE</string>
+    <string name="pattern_load">Yükle</string>
+    <string name="pattern_rename">Yeniden adlandır</string>
+    <string name="pattern_favorite">Favori</string>
+    <string name="pattern_share">Paylaş</string>
+    <string name="pattern_delete">Sil</string>
+    <string name="empty_gallery_title">HENÜZ DESEN YOK</string>
+    <string name="empty_gallery_body">GRID veya SERBEST modda bir şey çiz, sonra KAYDET\'e bas.</string>
+    <string name="empty_animations_title">HENÜZ ANİMASYON YOK</string>
+    <string name="empty_animations_body">YENİ\'ye basarak çok kareli animasyon oluştur.</string>
+    <string name="backup_export">YEDEĞİ DIŞA AKTAR</string>
+    <string name="backup_import">YEDEĞİ İÇE AKTAR</string>
+    <string name="backup_exported">Yedek hazır — hedef seç</string>
+    <string name="backup_imported">%1$d desen, %2$d animasyon içe aktarıldı</string>
+    <string name="share_pattern_title">Glyph deseni</string>
+
+    <string name="animations_title">ANİMASYONLAR</string>
+    <string name="animation_title">ANİMASYON</string>
+    <string name="new_animation">+ YENİ ANİMASYON</string>
+    <string name="back">← GERİ</string>
+    <string name="animation_name_hint">Animasyon adı</string>
+    <string name="delay">HIZ</string>
+    <string name="add_frame">+ KARE</string>
+    <string name="duplicate_frame">⧉ KOPYA</string>
+    <string name="delete_frame">✕ KARE</string>
+    <string name="play">▶ OYNAT</string>
+    <string name="stop">⏹ DUR</string>
+    <string name="ping_pong">↔ İLERİ-GERİ</string>
+    <string name="ping_pong_on">↔ İLERİ-GERİ AÇIK</string>
+    <string name="onion_skin">ONION</string>
+    <string name="onion_skin_on">ONION ✓</string>
+    <string name="at_least_one_frame">En az 1 kare gerekli</string>
+    <string name="frames_count">%d kare</string>
+
+    <string name="image_import_title">GÖRSEL AKTAR</string>
+    <string name="pick_from_gallery">GALERİ</string>
+    <string name="camera">KAMERA</string>
+    <string name="select_image">GALERİ veya KAMERA\'dan foto seç</string>
+    <string name="threshold">EŞİK</string>
+    <string name="contrast">KONTRAST</string>
+    <string name="dither">DİTHER</string>
+    <string name="dither_grayscale">GRİ</string>
+    <string name="dither_threshold">1-BIT</string>
+    <string name="dither_floyd">FLOYD</string>
+    <string name="dither_atkinson">ATK</string>
+    <string name="dither_bayer">BAYER</string>
+    <string name="invert_import">TERS</string>
+    <string name="rotate">DÖNDÜR</string>
+    <string name="apply_to_grid_btn">GRID\'E UYGULA</string>
+
+    <!-- Format strings -->
+    <string name="brightness_value_format">×%.2f</string>
+    <string name="threshold_value_format">%d%%</string>
+    <string name="contrast_value_format">×%.2f</string>
+    <string name="brightness_percent_format">%d%%</string>
+    <string name="delay_ms_format">%dms</string>
+    <string name="pattern_name_format">Desen %d</string>
+    <string name="animation_name_format">Animasyon %d</string>
+    <string name="intensity_value_format">%d</string>
+    <string name="speed_value_format">%dms</string>
+    <string name="frames_value_format">%d</string>
+
+    <!-- Defaults -->
+    <string name="default_brightness">100%</string>
+    <string name="default_threshold">50%</string>
+    <string name="default_contrast">×1.00</string>
+    <string name="default_delay">150ms</string>
+    <string name="default_intensity">255</string>
+    <string name="default_frames">24</string>
+
+    <!-- Content descriptions -->
+    <string name="frame_thumb_desc">Kare küçük resmi</string>
+    <string name="pattern_thumb_desc">Desen küçük resmi</string>
+    <string name="animation_thumb_desc">Animasyon küçük resmi</string>
+
+    <string name="text_title">METİN</string>
+    <string name="text_hint">En fazla 40 karakter</string>
+    <string name="text_static">SABİT</string>
+    <string name="text_scroll">KAYAR</string>
+    <string name="text_scroll_speed">KAYMA HIZI</string>
+    <string name="text_send_static">SABİT GÖNDER</string>
+    <string name="text_send_scroll">KAYAR GÖNDER</string>
+
+    <string name="effects_title">EFEKTLER</string>
+    <string name="fx_breathing">NEFES</string>
+    <string name="fx_pulse">NABIZ</string>
+    <string name="fx_wave">DALGA</string>
+    <string name="fx_shimmer">PIRILTI</string>
+    <string name="fx_spiral">SPİRAL</string>
+    <string name="fx_starfield">YILDIZ</string>
+    <string name="fx_rain">YAĞMUR</string>
+    <string name="fx_heartbeat">KALP ATIŞI</string>
+    <string name="fx_use_current">MEVCUT ÇİZİMİ KULLAN</string>
+    <string name="fx_save">ANİMASYON OLARAK KAYDET</string>
+    <string name="fx_preview">ÖN İZLEME</string>
+    <string name="fx_frames">KARE</string>
+    <string name="fx_saved">Yeni animasyon olarak kaydedildi</string>
+</resources>

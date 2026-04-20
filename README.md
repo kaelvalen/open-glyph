@@ -10,14 +10,22 @@ Glyph Draw adds a new toy to your Glyph Toys list. Open the app, draw something 
 
 The canvas mirrors the exact circular shape of the Glyph Matrix, so what you draw is exactly what you see on the back of your phone.
 
-**Features**
+**Features (v2)**
 
-- Pixel grid editor — tap or drag to draw, with erase and invert tools
-- Freehand mode — draw naturally, converted to pixel art automatically
-- Image import — pick a photo or take one with the camera, preview and adjust threshold before converting
-- Animation editor — create multi-frame animations with adjustable delay
-- Gallery — save and manage multiple patterns, switch between them with the Glyph button
-- Brightness control
+- Full drawing toolkit — pen, eraser, fill bucket, line, rectangle, disc, circle, dropper
+- Symmetry modes — horizontal, vertical, 4‑way and 8‑way (radial) mirroring
+- Transforms — flip, rotate 90°, shift, invert
+- Undo / redo with 40‑step history
+- Grayscale brush with per‑pixel intensity
+- Freehand canvas — draws naturally and quantizes into pixel art
+- Text mode — 3x5 bitmap font with static centring or scrolling marquee (auto‑exported as an animation)
+- Effects generator — breathing, pulse, wave, shimmer, spiral, starfield, rain, heartbeat; uses the current drawing as a seed
+- Image import — multi‑algorithm dither (threshold, Floyd‑Steinberg, Atkinson, Bayer) plus grayscale, rotate, contrast/brightness and invert
+- Animation editor — onion skin, drag‑to‑reorder frames, duplicate frames, ping‑pong playback, live preview
+- Gallery — favourites, rename, share as PNG, per‑pattern metadata, empty‑state guidance
+- Backup — single‑file `.glyph` export/import covering all patterns and animations
+- Glyph service — cycles saved patterns with the Glyph button, plays back animations in straight or ping‑pong mode
+- Full English UI with optional Turkish localization
 
 ---
 
@@ -34,20 +42,29 @@ The canvas mirrors the exact circular shape of the Glyph Matrix, so what you dra
 ## Usage
 
 ### Drawing
-Open the app and use the **GRID** mode to draw pixel by pixel. Tap a pixel to toggle it on or off. Hold and drag to paint continuously. Use **FREE** mode for freehand drawing — your strokes get converted to the pixel grid automatically.
+Open the app and use the **GRID** mode to draw pixel by pixel. Pick a tool from the palette (pen, eraser, fill, line, rect, disc, circle, picker), optionally enable a symmetry mode, and tap or drag on the canvas. Use **FREE** mode for freehand — your strokes are rendered into the pixel grid automatically. The intensity slider controls pen grayscale.
 
 The canvas shows only the pixels that exist on the Glyph Matrix — the circular boundary is accurate to the hardware, so there are no surprises.
 
-### Saving to Glyph
-Tap **GLYPH'E GÖNDER** to save your current drawing. Then select Glyph Draw from the Glyph button cycle on the back of your phone.
+### Sending to Glyph
+Tap **SEND TO GLYPH** to publish your current drawing to the Glyph Matrix toy. Then select Glyph Draw from the Glyph button on the back of your phone.
 
-Long pressing the Glyph button cycles through your saved patterns.
+Pressing the Glyph button cycles through your saved patterns.
 
 ### Animations
-Tap **ANİMASYON** from the main screen. Draw each frame, add frames with **+ KARE**, set the delay with the slider, then send to Glyph. The animation loops automatically when the toy is active.
+Tap **ANIMATION** from the main screen. Draw each frame, add new ones with **+ FRAME**, optionally enable **ONION** to see the previous frame faded beneath the current one, drag frames in the strip to reorder them, adjust the delay slider, and toggle **PING‑PONG** for a bouncing loop. Hit play to preview, then send to Glyph.
+
+### Text
+Tap **TEXT** to render a typed message in the 3x5 bitmap font. Static mode centres the text on the matrix; scroll mode packages it as a looping marquee animation.
+
+### Effects
+Tap **FX** to generate animations procedurally — breathing, pulse, wave, shimmer, spiral, starfield, rain and heartbeat. You can seed effects with your current drawing and tune frame count and delay before saving.
 
 ### Image Import
-Tap **IMPORT**, pick a photo from your gallery or take one with the camera. Adjust the threshold slider to control which pixels light up, then confirm to send it to the grid.
+Tap **IMPORT**, pick a photo from your gallery or take one with the camera. Choose a dither algorithm (gray, 1‑bit, Floyd, Atkinson, Bayer), adjust threshold and contrast, rotate or invert as needed, then apply to the grid.
+
+### Gallery and backup
+The gallery keeps your patterns sorted with favourites first. Use the ⋯ button on any pattern for rename, share or delete. **EXPORT BACKUP** writes a single `.glyph` JSON file that contains every saved pattern and animation; **IMPORT BACKUP** restores it on another device.
 
 ---
 

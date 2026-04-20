@@ -91,13 +91,14 @@ class GlyphDrawToyService : Service() {
             ActiveState.MODE_ANIMATION -> {
                 val id = ActiveState.getId(applicationContext) ?: return
                 val anim = AnimationStore.get(applicationContext, id) ?: return
-                if (anim.frames.isEmpty()) return
+                val frames = anim.playbackFrames()
+                if (frames.isEmpty()) return
                 animJob = serviceScope.launch {
                     var idx = 0
                     while (isActive) {
-                        pushPixels(anim.frames[idx], 1.0f)
+                        pushPixels(frames[idx], 1.0f)
                         delay(anim.delayMs.toLong())
-                        idx = (idx + 1) % anim.frames.size
+                        idx = (idx + 1) % frames.size
                     }
                 }
             }

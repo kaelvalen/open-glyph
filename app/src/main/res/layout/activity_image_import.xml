@@ -4,8 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D"
-    android:padding="16dp">
+    android:background="#080808"
+    android:paddingTop="40dp"
+    android:paddingHorizontal="18dp"
+    android:paddingBottom="18dp">
 
     <TextView
         android:id="@+id/tvImportTitle"
@@ -13,67 +15,113 @@
         android:layout_height="wrap_content"
         android:text="@string/image_import_title"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:letterSpacing="0.2"
+        android:textSize="13sp"
+        android:letterSpacing="0.3"
         android:fontFamily="monospace"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/btnImportBack"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:text="@string/back"
         android:textColor="#888888"
         android:textSize="11sp"
         android:fontFamily="monospace"
+        android:padding="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Source buttons -->
     <LinearLayout
         android:id="@+id/sourceRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/tvImportTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+        <TextView
             android:id="@+id/btnPickGallery"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp"
             android:text="@string/pick_from_gallery"
             android:textColor="#FFFFFF"
-            android:textSize="11sp"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
             android:fontFamily="monospace"
-            android:backgroundTint="#2A2A2A" />
+            android:gravity="center"
+            android:background="@drawable/chip_bg"
+            android:layout_marginEnd="6dp" />
 
-        <Button
+        <TextView
             android:id="@+id/btnPickCamera"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:text="@string/camera"
             android:textColor="#FFFFFF"
-            android:textSize="11sp"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
             android:fontFamily="monospace"
-            android:backgroundTint="#2A2A2A" />
+            android:gravity="center"
+            android:background="@drawable/chip_bg"
+            android:layout_marginEnd="6dp" />
 
+        <TextView
+            android:id="@+id/btnRotate"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="@string/rotate"
+            android:textColor="#CCCCCC"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/btnInvert"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="@string/invert_import"
+            android:textColor="#CCCCCC"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg" />
     </LinearLayout>
 
-    <!-- Preview -->
+    <HorizontalScrollView
+        android:id="@+id/ditherScroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/sourceRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/ditherRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
     <FrameLayout
         android:id="@+id/importPreviewContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/sourceRow"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ditherScroll"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/thresholdRow"
@@ -91,12 +139,13 @@
             android:layout_gravity="center"
             android:text="@string/select_image"
             android:textColor="#444444"
-            android:textSize="14sp"
-            android:fontFamily="monospace" />
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:paddingHorizontal="16dp" />
 
     </FrameLayout>
 
-    <!-- Threshold row -->
     <LinearLayout
         android:id="@+id/thresholdRow"
         android:layout_width="0dp"
@@ -104,18 +153,18 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/importPreviewContainer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/brightnessRow">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/threshold"
             android:textColor="#888888"
-            android:textSize="10sp"
-            android:fontFamily="monospace"
-            android:layout_marginEnd="8dp" />
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace" />
 
         <SeekBar
             android:id="@+id/seekThreshold"
@@ -133,33 +182,31 @@
             android:layout_height="wrap_content"
             android:text="@string/default_threshold"
             android:textColor="#888888"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:fontFamily="monospace"
             android:gravity="end"
             android:layout_marginStart="8dp" />
-
     </LinearLayout>
 
-    <!-- Brightness row -->
     <LinearLayout
         android:id="@+id/brightnessRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@id/thresholdRow"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/contrastRow">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:text="@string/brightness"
             android:textColor="#888888"
-            android:textSize="10sp"
-            android:fontFamily="monospace"
-            android:layout_marginEnd="8dp" />
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace" />
 
         <SeekBar
             android:id="@+id/seekBrightnessImport"
@@ -177,27 +224,68 @@
             android:layout_height="wrap_content"
             android:text="@string/brightness_value_format"
             android:textColor="#888888"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:fontFamily="monospace"
             android:gravity="end"
             android:layout_marginStart="8dp" />
-
     </LinearLayout>
 
-    <!-- Confirm button -->
-    <Button
+    <LinearLayout
+        android:id="@+id/contrastRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnImportConfirm">
+
+        <TextView
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:text="@string/contrast"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace" />
+
+        <SeekBar
+            android:id="@+id/seekContrast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="300"
+            android:progress="100"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvContrastVal"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_contrast"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <TextView
         android:id="@+id/btnImportConfirm"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginTop="10dp"
         android:text="@string/apply_to_grid_btn"
-        android:textColor="#000000"
-        android:textSize="13sp"
+        android:textColor="#080808"
+        android:textSize="11sp"
+        android:letterSpacing="0.25"
         android:fontFamily="monospace"
-        android:letterSpacing="0.1"
-        android:backgroundTint="#FFFFFF"
+        android:gravity="center"
+        android:background="@drawable/btn_primary"
         android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@id/brightnessRow"
+        android:alpha="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

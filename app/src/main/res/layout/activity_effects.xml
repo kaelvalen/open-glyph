@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080808"
+    android:paddingTop="40dp"
+    android:paddingHorizontal="18dp"
+    android:paddingBottom="18dp">
+
+    <TextView
+        android:id="@+id/tvFxTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/effects_title"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:letterSpacing="0.3"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnFxBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textColor="#888888"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/fxScroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvFxTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/fxRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <com.kaelvalen.glyphmatrixdraw.ui.PixelGridView
+        android:id="@+id/fxPreview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@id/fxScroll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/framesRow"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <LinearLayout
+        android:id="@+id/framesRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/delayRow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fx_frames"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekFxFrames"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="56"
+            android:progress="18"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvFxFrames"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_frames"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/delayRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/optionsRow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delay"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekFxDelay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="400"
+            android:progress="80"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvFxDelay"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_delay"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/optionsRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/sendRow">
+
+        <TextView
+            android:id="@+id/btnFxUseCurrent"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:text="@string/fx_use_current"
+            android:textColor="#CCCCCC"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/btnFxPingPong"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:text="@string/ping_pong"
+            android:textColor="#CCCCCC"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/btnFxPreview"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/fx_preview"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/btn_outline"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btnFxSave"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/fx_save"
+            android:textColor="#080808"
+            android:textSize="10sp"
+            android:letterSpacing="0.25"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/btn_primary" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

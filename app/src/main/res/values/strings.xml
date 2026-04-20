@@ -3,64 +3,169 @@
     <string name="app_name">GlyphDraw</string>
     <string name="toy_name">Glyph Draw</string>
     <string name="toy_summary">Project your drawing to Glyph Matrix</string>
-    
+
     <!-- Main Activity -->
+    <string name="glyph_draw_title">GLYPH DRAW</string>
     <string name="mode_grid">GRID</string>
     <string name="mode_freehand">FREE</string>
     <string name="gallery">GALLERY</string>
     <string name="animation">ANIMATION</string>
     <string name="import_btn">IMPORT</string>
+    <string name="text_btn">TEXT</string>
+    <string name="effects_btn">FX</string>
+    <string name="settings_btn">MORE</string>
+
     <string name="brightness">BRIGHTNESS</string>
+    <string name="intensity">INTENSITY</string>
     <string name="erase">ERASE</string>
-    <string name="draw">✏️ Draw</string>
+    <string name="draw">DRAW</string>
     <string name="invert">INVERT</string>
     <string name="clear">CLEAR</string>
+    <string name="fill">FILL</string>
     <string name="apply_to_grid">APPLY TO GRID</string>
     <string name="send_to_glyph">SEND TO GLYPH</string>
-    <string name="saved">Saved ✓ Select from the Glyph button</string>
+    <string name="save_to_gallery">SAVE</string>
+    <string name="saved">Saved. Select Glyph Draw from the Glyph button.</string>
     <string name="loaded">Loaded</string>
-    
+    <string name="undo">UNDO</string>
+    <string name="redo">REDO</string>
+
+    <!-- Tools -->
+    <string name="tool_pen">PEN</string>
+    <string name="tool_eraser">ERASE</string>
+    <string name="tool_fill">FILL</string>
+    <string name="tool_line">LINE</string>
+    <string name="tool_rect">RECT</string>
+    <string name="tool_rect_fill">BOX</string>
+    <string name="tool_circle">CIRCLE</string>
+    <string name="tool_circle_fill">DISC</string>
+    <string name="tool_dropper">PICK</string>
+
+    <string name="sym_none">SYM: OFF</string>
+    <string name="sym_h">SYM: H</string>
+    <string name="sym_v">SYM: V</string>
+    <string name="sym_both">SYM: HV</string>
+    <string name="sym_quad">SYM: 8x</string>
+
+    <string name="flip_h">FLIP ↔</string>
+    <string name="flip_v">FLIP ↕</string>
+    <string name="rotate_cw">ROTATE 90°</string>
+    <string name="shift_left">←</string>
+    <string name="shift_right">→</string>
+    <string name="shift_up">↑</string>
+    <string name="shift_down">↓</string>
+
     <!-- Gallery Activity -->
     <string name="gallery_title">GALLERY</string>
-    <string name="new_pattern">+ NEW PATTERN</string>
+    <string name="new_pattern">+ SAVE CURRENT</string>
     <string name="save_current_drawing">Save current drawing</string>
     <string name="pattern_name_hint">Pattern name</string>
+    <string name="rename">Rename</string>
+    <string name="rename_title">Rename</string>
     <string name="delete">Delete</string>
     <string name="delete_confirm">Delete \"%s\"?</string>
     <string name="deleted">Deleted</string>
     <string name="load">LOAD</string>
-    
-    <!-- Animation Editor -->
+    <string name="pattern_load">Load</string>
+    <string name="pattern_rename">Rename</string>
+    <string name="pattern_favorite">Favorite</string>
+    <string name="pattern_share">Share</string>
+    <string name="pattern_delete">Delete</string>
+    <string name="favorite_on">★</string>
+    <string name="favorite_off">☆</string>
+    <string name="empty_gallery_title">NO PATTERNS YET</string>
+    <string name="empty_gallery_body">Create something in GRID or FREE mode, then hit SAVE.</string>
+    <string name="empty_animations_title">NO ANIMATIONS YET</string>
+    <string name="empty_animations_body">Tap NEW to build a multi-frame animation.</string>
+    <string name="backup_export">EXPORT BACKUP</string>
+    <string name="backup_import">IMPORT BACKUP</string>
+    <string name="backup_exported">Backup ready — pick a destination</string>
+    <string name="backup_imported">Imported %1$d patterns, %2$d animations</string>
+    <string name="share_pattern_title">Glyph pattern</string>
+
+    <!-- Animation gallery / editor -->
+    <string name="animations_title">ANIMATIONS</string>
     <string name="animation_title">ANIMATION</string>
+    <string name="new_animation">+ NEW ANIMATION</string>
     <string name="back">← BACK</string>
+    <string name="close">✕</string>
     <string name="animation_name_hint">Animation name</string>
     <string name="delay">DELAY</string>
     <string name="add_frame">+ FRAME</string>
-    <string name="duplicate_frame">⧉ DUPLICATE</string>
+    <string name="duplicate_frame">⧉ DUP</string>
     <string name="delete_frame">✕ FRAME</string>
     <string name="play">▶ PLAY</string>
     <string name="stop">⏹ STOP</string>
+    <string name="ping_pong">↔ PING-PONG</string>
+    <string name="ping_pong_on">↔ PING-PONG ON</string>
+    <string name="onion_skin">ONION</string>
+    <string name="onion_skin_on">ONION ✓</string>
     <string name="at_least_one_frame">At least 1 frame is required</string>
-    
+    <string name="frames_count">%d frames</string>
+
     <!-- Image Import -->
     <string name="image_import_title">IMAGE IMPORT</string>
-    <string name="pick_from_gallery">PICK FROM GALLERY</string>
+    <string name="pick_from_gallery">GALLERY</string>
     <string name="camera">CAMERA</string>
-    <string name="select_image">Select image</string>
+    <string name="select_image">Tap GALLERY or CAMERA to pick a photo</string>
     <string name="threshold">THRESHOLD</string>
+    <string name="contrast">CONTRAST</string>
+    <string name="dither">DITHER</string>
+    <string name="dither_grayscale">GRAY</string>
+    <string name="dither_threshold">1-BIT</string>
+    <string name="dither_floyd">FLOYD</string>
+    <string name="dither_atkinson">ATK</string>
+    <string name="dither_bayer">BAYER</string>
+    <string name="invert_import">INVERT</string>
+    <string name="rotate">ROTATE</string>
     <string name="apply_to_grid_btn">APPLY → GRID</string>
+
+    <!-- Text mode -->
+    <string name="text_title">TEXT</string>
+    <string name="text_hint">Type up to 40 chars</string>
+    <string name="text_static">STATIC</string>
+    <string name="text_scroll">SCROLL</string>
+    <string name="text_scroll_speed">SCROLL SPEED</string>
+    <string name="text_send_static">SEND STATIC</string>
+    <string name="text_send_scroll">SEND SCROLL</string>
+
+    <!-- Effects -->
+    <string name="effects_title">EFFECTS</string>
+    <string name="fx_breathing">BREATHING</string>
+    <string name="fx_pulse">PULSE</string>
+    <string name="fx_wave">WAVE</string>
+    <string name="fx_shimmer">SHIMMER</string>
+    <string name="fx_spiral">SPIRAL</string>
+    <string name="fx_starfield">STARFIELD</string>
+    <string name="fx_rain">RAIN</string>
+    <string name="fx_heartbeat">HEARTBEAT</string>
+    <string name="fx_use_current">USE CURRENT DRAWING</string>
+    <string name="fx_save">SAVE AS ANIMATION</string>
+    <string name="fx_preview">PREVIEW</string>
+    <string name="fx_frames">FRAMES</string>
+    <string name="fx_saved">Saved as new animation</string>
+
+    <!-- Format strings -->
     <string name="brightness_value_format">×%.2f</string>
     <string name="threshold_value_format">%d%%</string>
+    <string name="contrast_value_format">×%.2f</string>
     <string name="brightness_percent_format">%d%%</string>
     <string name="delay_ms_format">%dms</string>
     <string name="pattern_name_format">Pattern %d</string>
-    <string name="fill">FILL</string>
-    <string name="glyph_draw_title">GLYPH DRAW</string>
-    <string name="animations_title">ANIMATIONS</string>
-    <string name="close">✕</string>
+    <string name="animation_name_format">Animation %d</string>
+    <string name="intensity_value_format">%d</string>
+    <string name="speed_value_format">%dms</string>
+    <string name="frames_value_format">%d</string>
+
+    <!-- Defaults -->
     <string name="default_brightness">100%</string>
     <string name="default_threshold">50%</string>
-    <string name="default_delay">250ms</string>
+    <string name="default_contrast">×1.00</string>
+    <string name="default_delay">150ms</string>
+    <string name="default_intensity">255</string>
+    <string name="default_frames">24</string>
+
+    <!-- Content descriptions -->
     <string name="frame_thumb_desc">Frame thumbnail</string>
     <string name="pattern_thumb_desc">Pattern thumbnail</string>
     <string name="animation_thumb_desc">Animation thumbnail</string>

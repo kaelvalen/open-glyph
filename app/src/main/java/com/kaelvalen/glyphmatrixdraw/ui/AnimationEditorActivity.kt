@@ -29,6 +29,8 @@ class AnimationEditorActivity : AppCompatActivity() {
     private var currentAnimId: String = AnimationStore.newId()
     private var previewJob: Job? = null
     private var isPlaying = false
+    private var onionEnabled = false
+    private var pingPongEnabled = false
 
     private fun seekToDelay(progress: Int): Int = 50 + progress * 10
     private fun delayToSeek(ms: Int): Int = ((ms - 50) / 10).coerceIn(0, 195)
@@ -38,11 +40,15 @@ class AnimationEditorActivity : AppCompatActivity() {
         binding = ActivityAnimationEditorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        frameAdapter = FrameAdapter { index -> selectFrame(index) }
+        frameAdapter = FrameAdapter(
+            onClick = { index -> selectFrame(index) },
+            onReorder = { _, _ -> refreshOnion() }
+        )
 
         binding.rvFrames.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvFrames.adapter = frameAdapter
+        frameAdapter.attachToRecyclerView(binding.rvFrames)
 
         frameAdapter.submit(listOf(IntArray(625)))
 
@@ -65,15 +71,15 @@ class AnimationEditorActivity : AppCompatActivity() {
         binding.btnSendAnim.setOnClickListener { sendToGlyph() }
         binding.btnAnimBack.setOnClickListener { finish() }
 
+        binding.btnOnion.setOnClickListener { toggleOnion() }
+        binding.btnPingPong.setOnClickListener { togglePingPong() }
+
         binding.etAnimName.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) { binding.etAnimName.clearFocus(); true } else false
         }
 
-        // Load animation if provided
         val animId = intent.getStringExtra(EXTRA_LOAD_ANIMATION_ID)
-        if (animId != null) {
-            loadAnimation(animId)
-        }
+        if (animId != null) loadAnimation(animId)
     }
 
     override fun onPause() { super.onPause(); stopPreview() }
@@ -82,6 +88,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         stopPreview()
         frameAdapter.select(index)
         binding.animPixelGrid.setPixels(frameAdapter.getFrames()[index])
+        refreshOnion()
     }
 
     private fun addFrame() {
@@ -90,6 +97,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         frameAdapter.submit(frames, frames.size - 1)
         binding.animPixelGrid.setPixels(IntArray(625))
         binding.rvFrames.smoothScrollToPosition(frames.size - 1)
+        refreshOnion()
     }
 
     private fun dupFrame() {
@@ -98,32 +106,62 @@ class AnimationEditorActivity : AppCompatActivity() {
         val insertAt = frameAdapter.selectedIndex + 1
         frames.add(insertAt, copy)
         frameAdapter.submit(frames, insertAt)
+        binding.animPixelGrid.setPixels(copy)
         binding.rvFrames.smoothScrollToPosition(insertAt)
+        refreshOnion()
     }
 
     private fun deleteFrame() {
         val frames = frameAdapter.getFrames().toMutableList()
-        if (frames.size <= 1) { Toast.makeText(this, "At least 1 frame is required", Toast.LENGTH_SHORT).show(); return }
+        if (frames.size <= 1) {
+            Toast.makeText(this, R.string.at_least_one_frame, Toast.LENGTH_SHORT).show()
+            return
+        }
         frames.removeAt(frameAdapter.selectedIndex)
         val newIdx = (frameAdapter.selectedIndex - 1).coerceAtLeast(0)
         frameAdapter.submit(frames, newIdx)
         binding.animPixelGrid.setPixels(frames[newIdx])
+        refreshOnion()
     }
 
     private fun togglePlay() {
         if (isPlaying) stopPreview() else startPreview()
     }
 
-    private fun startPreview() {
+    private fun toggleOnion() {
+        onionEnabled = !onionEnabled
+        binding.btnOnion.text = getString(if (onionEnabled) R.string.onion_skin_on else R.string.onion_skin)
+        binding.btnOnion.setTextColor(if (onionEnabled) 0xFFFFFFFF.toInt() else 0xFFCCCCCC.toInt())
+        refreshOnion()
+    }
+
+    private fun togglePingPong() {
+        pingPongEnabled = !pingPongEnabled
+        binding.btnPingPong.text = getString(if (pingPongEnabled) R.string.ping_pong_on else R.string.ping_pong)
+        binding.btnPingPong.setTextColor(if (pingPongEnabled) 0xFFFFFFFF.toInt() else 0xFFCCCCCC.toInt())
+    }
+
+    private fun refreshOnion() {
+        val idx = frameAdapter.selectedIndex
         val frames = frameAdapter.getFrames()
+        binding.animPixelGrid.onionPixels = if (!onionEnabled || idx <= 0) null else frames.getOrNull(idx - 1)
+    }
+
+    private fun startPreview() {
+        val frames = if (pingPongEnabled && frameAdapter.getFrames().size >= 3) {
+            val f = frameAdapter.getFrames()
+            f + f.subList(1, f.size - 1).reversed()
+        } else frameAdapter.getFrames()
         if (frames.isEmpty()) return
         isPlaying = true
         binding.btnPlayAnim.text = getString(R.string.stop)
+        binding.animPixelGrid.onionPixels = null
         val delayMs = seekToDelay(binding.seekDelay.progress).toLong()
         previewJob = lifecycleScope.launch {
             var idx = 0
             while (isActive) {
-                selectFrame(idx)
+                val pixels = frames[idx]
+                binding.animPixelGrid.setPixels(pixels, pushToUndo = false)
                 delay(delayMs)
                 idx = (idx + 1) % frames.size
             }
@@ -134,14 +172,28 @@ class AnimationEditorActivity : AppCompatActivity() {
         previewJob?.cancel(); previewJob = null
         isPlaying = false
         binding.btnPlayAnim.text = getString(R.string.play)
+        if (frameAdapter.getFrames().isNotEmpty()) {
+            binding.animPixelGrid.setPixels(frameAdapter.getFrames()[frameAdapter.selectedIndex], pushToUndo = false)
+            refreshOnion()
+        }
     }
 
     private fun sendToGlyph() {
-        val name = binding.etAnimName.text.toString().ifBlank { "Animation" }
-        val anim = Anim(currentAnimId, name, seekToDelay(binding.seekDelay.progress), frameAdapter.getFrames())
+        val name = binding.etAnimName.text.toString().ifBlank { getString(R.string.animation_title) }
+        val existing = AnimationStore.get(this, currentAnimId)
+        val anim = Anim(
+            id = currentAnimId,
+            name = name,
+            delayMs = seekToDelay(binding.seekDelay.progress),
+            frames = frameAdapter.getFrames(),
+            pingPong = pingPongEnabled,
+            favorite = existing?.favorite ?: false,
+            createdAt = existing?.createdAt ?: System.currentTimeMillis(),
+            updatedAt = System.currentTimeMillis(),
+        )
         AnimationStore.save(this, anim)
         ActiveState.setAnimation(this, currentAnimId)
-        Toast.makeText(this, "Saved ✓ Select from the Glyph button", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, R.string.saved, Toast.LENGTH_LONG).show()
     }
 
     private fun loadAnimation(animId: String) {
@@ -152,5 +204,7 @@ class AnimationEditorActivity : AppCompatActivity() {
         binding.tvDelayMs.text = getString(R.string.delay_ms_format, anim.delayMs)
         frameAdapter.submit(anim.frames, 0)
         binding.animPixelGrid.setPixels(anim.frames.firstOrNull() ?: IntArray(625))
+        if (anim.pingPong && !pingPongEnabled) togglePingPong()
+        refreshOnion()
     }
 }

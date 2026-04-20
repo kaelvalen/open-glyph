@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#080808"
-    android:paddingTop="48dp">
+    android:paddingTop="40dp"
+    android:fitsSystemWindows="true">
 
+    <!-- Header -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="16dp">
+        android:paddingHorizontal="18dp"
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/tvTitle"
@@ -25,6 +27,7 @@
             android:fontFamily="monospace" />
 
         <LinearLayout
+            android:id="@+id/modeTabs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -35,10 +38,10 @@
 
             <TextView
                 android:id="@+id/btnModeGrid"
-                android:layout_width="52dp"
+                android:layout_width="56dp"
                 android:layout_height="28dp"
                 android:text="@string/mode_grid"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="10sp"
                 android:letterSpacing="0.1"
                 android:fontFamily="monospace"
@@ -47,7 +50,7 @@
 
             <TextView
                 android:id="@+id/btnModeFreehand"
-                android:layout_width="52dp"
+                android:layout_width="56dp"
                 android:layout_height="28dp"
                 android:text="@string/mode_freehand"
                 android:textColor="#666666"
@@ -57,241 +60,500 @@
                 android:gravity="center"
                 android:background="@android:color/transparent" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/undoRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/modeTabs"
+            android:orientation="horizontal"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/btnUndo"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/undo"
+                android:textColor="#888888"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/btnRedo"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/redo"
+                android:textColor="#888888"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/pill_outline" />
+        </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
+    <!-- Nav pills -->
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="12dp"
-        android:orientation="horizontal">
+        android:scrollbars="none"
+        android:paddingHorizontal="18dp"
+        android:paddingBottom="12dp">
 
-        <TextView
-            android:id="@+id/btnGallery"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="@string/gallery"
-            android:textColor="#888888"
-            android:textSize="9sp"
-            android:letterSpacing="0.15"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:paddingHorizontal="12dp"
-            android:background="@drawable/pill_outline"
-            android:layout_marginEnd="8dp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/btnAnimation"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="@string/animation"
-            android:textColor="#888888"
-            android:textSize="9sp"
-            android:letterSpacing="0.15"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:paddingHorizontal="12dp"
-            android:background="@drawable/pill_outline"
-            android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/btnGallery"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/gallery"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:id="@+id/btnImport"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:text="@string/import_btn"
-            android:textColor="#888888"
-            android:textSize="9sp"
-            android:letterSpacing="0.15"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:paddingHorizontal="12dp"
-            android:background="@drawable/pill_outline" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/btnAnimation"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/animation"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="8dp" />
 
-    <!-- Square drawing area: keep a perfect square via horizontal padding -->
-    <LinearLayout
+            <TextView
+                android:id="@+id/btnImport"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/import_btn"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/btnText"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/text_btn"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/btnEffects"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/effects_btn"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Canvas -->
+    <FrameLayout
+        android:id="@+id/drawingContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp">
+        android:layout_marginHorizontal="18dp">
 
-        <FrameLayout
-            android:id="@+id/drawingContainer"
+        <com.kaelvalen.glyphmatrixdraw.ui.PixelGridView
+            android:id="@+id/pixelGridView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content" />
 
-            <com.kaelvalen.glyphmatrixdraw.ui.PixelGridView
-                android:id="@+id/pixelGridView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <com.kaelvalen.glyphmatrixdraw.ui.FreehandCanvasView
+            android:id="@+id/freehandCanvasView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </FrameLayout>
 
-            <com.kaelvalen.glyphmatrixdraw.ui.FreehandCanvasView
-                android:id="@+id/freehandCanvasView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" />
-        </FrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <!-- Scrollable controls -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="24dp"
-        android:gravity="bottom">
+        android:scrollbars="none"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingBottom="12dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="18dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="18dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Tool palette -->
+            <HorizontalScrollView
+                android:id="@+id/toolScroll"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/brightness"
-                android:textColor="#444444"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:layout_marginEnd="12dp"
-                android:minWidth="72dp" />
+                android:scrollbars="none"
+                android:layout_marginBottom="10dp">
 
-            <SeekBar
-                android:id="@+id/seekBrightness"
-                android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/toolRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <!-- Symmetry + transforms -->
+            <HorizontalScrollView
+                android:id="@+id/transformScroll"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:progressTint="#FFFFFF"
-                android:thumbTint="#FFFFFF" />
+                android:scrollbars="none"
+                android:layout_marginBottom="10dp">
 
-            <TextView
-                android:id="@+id/tvBrightness"
-                android:layout_width="40dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnSymmetry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="@string/sym_none"
+                        android:textColor="#CCCCCC"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.15"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFlipH"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="@string/flip_h"
+                        android:textColor="#CCCCCC"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.15"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFlipV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="@string/flip_v"
+                        android:textColor="#CCCCCC"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.15"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnRotate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="@string/rotate_cw"
+                        android:textColor="#CCCCCC"
+                        android:textSize="9sp"
+                        android:letterSpacing="0.15"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnShiftLeft"
+                        android:layout_width="36dp"
+                        android:layout_height="32dp"
+                        android:text="@string/shift_left"
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnShiftDown"
+                        android:layout_width="36dp"
+                        android:layout_height="32dp"
+                        android:text="@string/shift_down"
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnShiftUp"
+                        android:layout_width="36dp"
+                        android:layout_height="32dp"
+                        android:text="@string/shift_up"
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:background="@drawable/chip_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnShiftRight"
+                        android:layout_width="36dp"
+                        android:layout_height="32dp"
+                        android:text="@string/shift_right"
+                        android:textColor="#CCCCCC"
+                        android:textSize="14sp"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:background="@drawable/chip_bg" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Intensity -->
+            <LinearLayout
+                android:id="@+id/intensityRow"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/default_brightness"
-                android:textColor="#666666"
-                android:textSize="10sp"
-                android:fontFamily="monospace"
-                android:gravity="end"
-                android:layout_marginStart="12dp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/intensity"
+                    android:textColor="#666666"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace" />
+
+                <SeekBar
+                    android:id="@+id/seekIntensity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="255"
+                    android:progress="255"
+                    android:progressTint="#FFFFFF"
+                    android:thumbTint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvIntensity"
+                    android:layout_width="44dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_intensity"
+                    android:textColor="#888888"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- Brightness -->
+            <LinearLayout
+                android:id="@+id/brightnessRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="88dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brightness"
+                    android:textColor="#666666"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace" />
+
+                <SeekBar
+                    android:id="@+id/seekBrightness"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressTint="#FFFFFF"
+                    android:thumbTint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvBrightness"
+                    android:layout_width="44dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_brightness"
+                    android:textColor="#888888"
+                    android:textSize="10sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- Grid quick actions -->
+            <LinearLayout
+                android:id="@+id/gridControls"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/btnInvert"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/invert"
+                    android:textColor="#AAAAAA"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+
+                <View android:layout_width="1dp" android:layout_height="16dp"
+                    android:layout_gravity="center_vertical" android:background="#222222" />
+
+                <TextView
+                    android:id="@+id/btnFill"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/fill"
+                    android:textColor="#AAAAAA"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+
+                <View android:layout_width="1dp" android:layout_height="16dp"
+                    android:layout_gravity="center_vertical" android:background="#222222" />
+
+                <TextView
+                    android:id="@+id/btnClear"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/clear"
+                    android:textColor="#AAAAAA"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Freehand controls -->
+            <LinearLayout
+                android:id="@+id/freehandControls"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/btnApplyFreehand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/apply_to_grid"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+
+                <View android:layout_width="1dp" android:layout_height="16dp"
+                    android:layout_gravity="center_vertical" android:background="#222222" />
+
+                <TextView
+                    android:id="@+id/btnClearFreehand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/clear"
+                    android:textColor="#AAAAAA"
+                    android:textSize="9sp"
+                    android:letterSpacing="0.2"
+                    android:fontFamily="monospace"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Primary actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnSaveGallery"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="@string/save_to_gallery"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.25"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:background="@drawable/btn_outline"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/btnSend"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="2"
+                    android:text="@string/send_to_glyph"
+                    android:textColor="#080808"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.25"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:background="@drawable/btn_primary" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/gridControls"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp">
-
-            <TextView
-                android:id="@+id/btnErase"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/erase"
-                android:textColor="#555555"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-
-            <View android:layout_width="1dp" android:layout_height="16dp"
-                android:layout_gravity="center_vertical" android:background="#222222" />
-
-            <TextView
-                android:id="@+id/btnInvert"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/invert"
-                android:textColor="#555555"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-
-            <View android:layout_width="1dp" android:layout_height="16dp"
-                android:layout_gravity="center_vertical" android:background="#222222" />
-
-            <TextView
-                android:id="@+id/btnFill"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/fill"
-                android:textColor="#555555"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-
-            <View android:layout_width="1dp" android:layout_height="16dp"
-                android:layout_gravity="center_vertical" android:background="#222222" />
-
-            <TextView
-                android:id="@+id/btnClear"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/clear"
-                android:textColor="#555555"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/freehandControls"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:paddingBottom="10dp">
-
-            <TextView
-                android:id="@+id/btnApplyFreehand"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/apply_to_grid"
-                android:textColor="#AAAAAA"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-
-            <View android:layout_width="1dp" android:layout_height="16dp"
-                android:layout_gravity="center_vertical" android:background="#222222" />
-
-            <TextView
-                android:id="@+id/btnClearFreehand"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/clear"
-                android:textColor="#555555"
-                android:textSize="9sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="monospace"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/btnSend"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="@string/send_to_glyph"
-            android:textColor="#080808"
-            android:textSize="11sp"
-            android:letterSpacing="0.25"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:background="@drawable/btn_primary" />
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

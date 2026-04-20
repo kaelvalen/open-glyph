@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080808"
+    android:paddingTop="40dp"
+    android:paddingHorizontal="18dp"
+    android:paddingBottom="18dp">
+
+    <TextView
+        android:id="@+id/tvTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_title"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:letterSpacing="0.3"
+        android:fontFamily="monospace"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnTextBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textColor="#888888"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etText"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/text_hint"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#444444"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:background="@drawable/pill_outline"
+        android:paddingHorizontal="14dp"
+        android:inputType="text"
+        android:maxLength="40"
+        android:imeOptions="actionDone"
+        app:layout_constraintTop_toBottomOf="@id/tvTextTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/modeRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnTextStatic"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/text_static"
+            android:textColor="#080808"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg_selected"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/btnTextScroll"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="@string/text_scroll"
+            android:textColor="#CCCCCC"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/chip_bg" />
+    </LinearLayout>
+
+    <com.kaelvalen.glyphmatrixdraw.ui.PixelGridView
+        android:id="@+id/textPreview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@id/modeRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/speedRow"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <LinearLayout
+        android:id="@+id/speedRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/sendRow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_scroll_speed"
+            android:textColor="#888888"
+            android:textSize="9sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <SeekBar
+            android:id="@+id/seekSpeed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="400"
+            android:progress="150"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_delay"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:gravity="end"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sendRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/btnTextApplyEditor"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/apply_to_grid"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:letterSpacing="0.2"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/btn_outline"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btnTextSend"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/text_send_static"
+            android:textColor="#080808"
+            android:textSize="11sp"
+            android:letterSpacing="0.25"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:background="@drawable/btn_primary" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

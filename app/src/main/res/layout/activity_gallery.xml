@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#080808"
-    android:paddingTop="48dp">
+    android:paddingTop="40dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="16dp">
+        android:paddingHorizontal="18dp"
+        android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/tvGalleryTitle"
@@ -31,37 +31,102 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:text="@string/close"
-            android:textColor="#666666"
+            android:textColor="#888888"
             android:textSize="18sp"
             android:padding="8dp" />
     </RelativeLayout>
 
-    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#141414" />
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#181818" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPatterns"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="8dp"
+        android:paddingTop="6dp"
         android:clipToPadding="false" />
+
+    <LinearLayout
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:paddingHorizontal="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_gallery_title"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:letterSpacing="0.25"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_gallery_body"
+            android:textColor="#666666"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:gravity="center" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="16dp">
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/btnExportBackup"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="@string/backup_export"
+                android:textColor="#CCCCCC"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/btnImportBackup"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="@string/backup_import"
+                android:textColor="#CCCCCC"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:background="@drawable/pill_outline" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/fabNewPattern"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="48dp"
             android:text="@string/new_pattern"
-            android:textColor="#FFFFFF"
+            android:textColor="#080808"
             android:textSize="11sp"
             android:letterSpacing="0.2"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:background="@drawable/btn_outline" />
+            android:background="@drawable/btn_primary" />
     </LinearLayout>
 </LinearLayout>
