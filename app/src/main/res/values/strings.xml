@@ -14,6 +14,11 @@
     <string name="text_btn">TEXT</string>
     <string name="effects_btn">FX</string>
     <string name="settings_btn">MORE</string>
+    <string name="language_btn">LANG</string>
+    <string name="language_title">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
 
     <string name="brightness">BRIGHTNESS</string>
     <string name="intensity">INTENSITY</string>

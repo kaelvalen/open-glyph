@@ -14,7 +14,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.os.LocaleListCompat
 import com.kaelvalen.glyphmatrixdraw.R
 import com.kaelvalen.glyphmatrixdraw.databinding.ActivityMainBinding
 import com.kaelvalen.glyphmatrixdraw.glyph.ActiveState
@@ -266,6 +268,34 @@ class MainActivity : AppCompatActivity() {
         binding.btnImport.setOnClickListener { importLauncher.launch(Intent(this, ImageImportActivity::class.java)) }
         binding.btnText.setOnClickListener { textLauncher.launch(Intent(this, TextActivity::class.java)) }
         binding.btnEffects.setOnClickListener { effectsLauncher.launch(Intent(this, EffectsActivity::class.java)) }
+        binding.btnLanguage.setOnClickListener { showLanguagePicker() }
+    }
+
+    private fun showLanguagePicker() {
+        val labels = arrayOf(
+            getString(R.string.language_system),
+            getString(R.string.language_english),
+            getString(R.string.language_turkish),
+        )
+        val tags = arrayOf("", "en", "tr")
+        val current = AppCompatDelegate.getApplicationLocales()
+            .toLanguageTags()
+            .substringBefore('-')
+            .lowercase()
+        val checked = tags.indexOf(current).takeIf { it >= 0 } ?: 0
+        AlertDialog.Builder(this)
+            .setTitle(R.string.language_title)
+            .setSingleChoiceItems(labels, checked) { dialog, which ->
+                val locales = if (tags[which].isEmpty()) {
+                    LocaleListCompat.getEmptyLocaleList()
+                } else {
+                    LocaleListCompat.forLanguageTags(tags[which])
+                }
+                AppCompatDelegate.setApplicationLocales(locales)
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun promptSaveToGallery() {

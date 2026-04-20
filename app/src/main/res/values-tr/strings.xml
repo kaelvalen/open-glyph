@@ -13,6 +13,11 @@
     <string name="text_btn">METİN</string>
     <string name="effects_btn">EFEKT</string>
     <string name="settings_btn">DAHA</string>
+    <string name="language_btn">DİL</string>
+    <string name="language_title">Dil</string>
+    <string name="language_system">Sistem varsayılanı</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
 
     <string name="brightness">PARLAKLIK</string>
     <string name="intensity">YOĞUNLUK</string>

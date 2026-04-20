@@ -3,10 +3,6 @@ package com.kaelvalen.glyphmatrixdraw.glyph
 import android.app.Service
 import android.content.ComponentName
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
@@ -14,9 +10,7 @@ import android.os.Message
 import android.os.Messenger
 import android.util.Log
 import com.nothing.ketchum.Glyph
-import com.nothing.ketchum.GlyphMatrixFrame
 import com.nothing.ketchum.GlyphMatrixManager
-import com.nothing.ketchum.GlyphMatrixObject
 import com.nothing.ketchum.GlyphToy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -123,31 +117,20 @@ class GlyphDrawToyService : Service() {
         Log.d(TAG, "Cycled to pattern ${next + 1}/${patterns.size}: ${p.name}")
     }
 
+    /**
+     * Push a 25x25 pixel array straight to the Glyph Matrix.
+     *
+     * We bypass `GlyphMatrixFrame`/`GlyphMatrixObject` on purpose — those go
+     * through `GlyphMatrixUtils.convertToGlyphMatrix`, which re-draws the
+     * bitmap through a `Matrix` with bilinear filtering even at scale=1.0
+     * and leaks brightness into neighbouring LEDs. Sending the raw IntArray
+     * gives a 1:1 mapping between the editor grid and the physical LEDs.
+     */
     private fun pushPixels(pixels: IntArray, brightness: Float) {
         val gmm = glyphMatrixManager ?: return
-        val bmp = Bitmap.createBitmap(25, 25, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bmp)
-        val paint = Paint()
-        for (row in 0 until 25) {
-            for (col in 0 until 25) {
-                val v = ((pixels[row * 25 + col] / 255f) * brightness * 255).toInt().coerceIn(0, 255)
-                paint.color = Color.rgb(v, v, v)
-                canvas.drawPoint(col.toFloat(), row.toFloat(), paint)
-            }
-        }
-        val obj = GlyphMatrixObject.Builder()
-            .setImageSource(bmp)
-            .setScale(100)
-            .setOrientation(0)
-            .setPosition(0, 0)
-            .setReverse(false)
-            .build()
-        val frame = GlyphMatrixFrame.Builder()
-            .addTop(obj)
-            .build(applicationContext)
+        val out = GlyphMask.toMatrixColors(pixels, brightness)
         try {
-            gmm.setMatrixFrame(frame.render())
-            Log.d(TAG, "frame sent OK")
+            gmm.setMatrixFrame(out)
         } catch (e: Exception) {
             Log.e(TAG, "setMatrixFrame failed: ${e.message}")
         }

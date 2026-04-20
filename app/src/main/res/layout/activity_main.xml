@@ -179,6 +179,20 @@
                 android:fontFamily="monospace"
                 android:gravity="center"
                 android:paddingHorizontal="12dp"
+                android:background="@drawable/pill_outline"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/btnLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="@string/language_btn"
+                android:textColor="#AAAAAA"
+                android:textSize="9sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
                 android:background="@drawable/pill_outline" />
         </LinearLayout>
     </HorizontalScrollView>

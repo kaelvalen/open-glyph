@@ -2,7 +2,6 @@ package com.kaelvalen.glyphmatrixdraw.glyph
 
 import android.content.ComponentName
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
 import com.nothing.ketchum.Glyph
 import com.nothing.ketchum.GlyphException
@@ -12,7 +11,7 @@ class GlyphController(private val context: Context) {
 
     companion object {
         private const val TAG = "GlyphController"
-        const val PIXEL_COUNT = 625
+        const val PIXEL_COUNT = GlyphMask.COUNT
     }
 
     private var manager: GlyphMatrixManager? = null
@@ -46,7 +45,7 @@ class GlyphController(private val context: Context) {
     /** pixels: IntArray(625) with values 0–255 per LED. brightness scales all values. */
     fun sendFrame(pixels: IntArray, brightness: Float = 1.0f) {
         if (!ready) { Log.w(TAG, "not ready"); return }
-        val arr = pixelsToColorArray(pixels, brightness)
+        val arr = GlyphMask.toMatrixColors(pixels, brightness)
         try { manager?.setMatrixFrame(arr) } catch (e: GlyphException) { Log.e(TAG, e.message ?: "unknown") }
     }
 
@@ -62,12 +61,4 @@ class GlyphController(private val context: Context) {
     }
 
     fun isReady() = ready
-}
-
-fun pixelsToColorArray(pixels: IntArray, brightness: Float): IntArray {
-    val scale = brightness.coerceIn(0f, 1f)
-    return IntArray(625) { i ->
-        val v = (pixels[i].coerceIn(0, 255) * scale).toInt()
-        if (v > 0) Color.rgb(v, v, v) else 0
-    }
 }
