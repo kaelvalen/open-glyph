@@ -34,6 +34,10 @@
     <string name="undo">GERİ AL</string>
     <string name="redo">İLERİ</string>
 
+    <string name="section_tools">ARAÇLAR</string>
+    <string name="section_transform">DÖNÜŞÜM</string>
+    <string name="section_levels">SEVİYE</string>
+
     <string name="tool_pen">KALEM</string>
     <string name="tool_eraser">SİL</string>
     <string name="tool_fill">DOLDUR</string>
@@ -154,17 +158,60 @@
     <string name="text_send_scroll">KAYAR GÖNDER</string>
 
     <string name="effects_title">EFEKTLER</string>
+    <string name="fx_cat_ambient">ATMOSFER</string>
+    <string name="fx_cat_radial">MERKEZ</string>
+    <string name="fx_cat_geometric">GEOMETRİK</string>
+    <string name="fx_cat_particles">PARÇACIK</string>
+
     <string name="fx_breathing">NEFES</string>
     <string name="fx_pulse">NABIZ</string>
-    <string name="fx_wave">DALGA</string>
+    <string name="fx_fade">SÖNÜMLE</string>
     <string name="fx_shimmer">PIRILTI</string>
+    <string name="fx_plasma">PLAZMA</string>
+
+    <string name="fx_wave">DALGA</string>
+    <string name="fx_ripple">DAMLA</string>
+    <string name="fx_heartbeat">KALP</string>
+    <string name="fx_orbit">YÖRÜNGE</string>
+    <string name="fx_loading">YÜKLEME</string>
+
     <string name="fx_spiral">SPİRAL</string>
+    <string name="fx_checkerboard">DAMA</string>
+    <string name="fx_scanline">TARAMA</string>
+    <string name="fx_bounce">ZIPLAYAN</string>
+
     <string name="fx_starfield">YILDIZ</string>
     <string name="fx_rain">YAĞMUR</string>
-    <string name="fx_heartbeat">KALP ATIŞI</string>
-    <string name="fx_use_current">MEVCUT ÇİZİMİ KULLAN</string>
+    <string name="fx_matrix_rain">MATRIX</string>
+    <string name="fx_fire">ATEŞ</string>
+    <string name="fx_firework">HAVAİ FİŞEK</string>
+    <string name="fx_lightning">ŞİMŞEK</string>
+
+    <string name="fx_desc_breathing">Çizimin üstünde yumuşak parlaklık iniş çıkışı.</string>
+    <string name="fx_desc_pulse">Keskin aç/kapa nabız, %60 iş çevrimi.</string>
+    <string name="fx_desc_fade">Kısa bir zirveyle yumuşak açılıp kapanan geçiş.</string>
+    <string name="fx_desc_shimmer">Çizimin üstünde rastgele pırıltı.</string>
+    <string name="fx_desc_plasma">İç içe geçen sinüs dalgaları — klasik plazma.</string>
+    <string name="fx_desc_wave">Merkezden yayılan radyal dalga.</string>
+    <string name="fx_desc_ripple">Dalgadan daha yumuşak, çoklu eş merkezli halkalar.</string>
+    <string name="fx_desc_heartbeat">Merkezde kalp atışı.</string>
+    <string name="fx_desc_orbit">Merkez etrafında dönen parlak bir nokta.</string>
+    <string name="fx_desc_loading">Dönen yay — yükleme göstergesi.</string>
+    <string name="fx_desc_spiral">Dönen spiral kollar.</string>
+    <string name="fx_desc_checkerboard">Yanıp sönen 5×5 dama deseni.</string>
+    <string name="fx_desc_scanline">İleri geri süpüren dikey çizgi.</string>
+    <string name="fx_desc_bounce">Matrix içinde zıplayan küçük bir top.</string>
+    <string name="fx_desc_starfield">Farklı hızlarda titreşen yıldızlar.</string>
+    <string name="fx_desc_rain">Kısa izli yağmur damlaları.</string>
+    <string name="fx_desc_matrix_rain">Uzun izli, Matrix tarzı dijital yağmur.</string>
+    <string name="fx_desc_fire">Aşağıdan yükselen titrek alev.</string>
+    <string name="fx_desc_firework">Yükselen roket ve parlak radyal patlama.</string>
+    <string name="fx_desc_lightning">Ani çakma ve ardından kalıcı solgun ışık.</string>
+
+    <string name="fx_use_current">ÇİZİMİ TEMEL ALARAK</string>
     <string name="fx_save">ANİMASYON OLARAK KAYDET</string>
-    <string name="fx_preview">ÖN İZLEME</string>
+    <string name="fx_preview">OYNAT</string>
+    <string name="fx_pause">DURAKLAT</string>
     <string name="fx_frames">KARE</string>
     <string name="fx_saved">Yeni animasyon olarak kaydedildi</string>
 </resources>

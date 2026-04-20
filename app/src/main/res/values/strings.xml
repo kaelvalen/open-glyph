@@ -35,6 +35,11 @@
     <string name="undo">UNDO</string>
     <string name="redo">REDO</string>
 
+    <!-- Section headings for main controls -->
+    <string name="section_tools">TOOLS</string>
+    <string name="section_transform">TRANSFORM</string>
+    <string name="section_levels">LEVELS</string>
+
     <!-- Tools -->
     <string name="tool_pen">PEN</string>
     <string name="tool_eraser">ERASE</string>
@@ -136,17 +141,60 @@
 
     <!-- Effects -->
     <string name="effects_title">EFFECTS</string>
+    <string name="fx_cat_ambient">AMBIENT</string>
+    <string name="fx_cat_radial">RADIAL</string>
+    <string name="fx_cat_geometric">GEOMETRIC</string>
+    <string name="fx_cat_particles">PARTICLES</string>
+
     <string name="fx_breathing">BREATHING</string>
     <string name="fx_pulse">PULSE</string>
-    <string name="fx_wave">WAVE</string>
+    <string name="fx_fade">FADE</string>
     <string name="fx_shimmer">SHIMMER</string>
+    <string name="fx_plasma">PLASMA</string>
+
+    <string name="fx_wave">WAVE</string>
+    <string name="fx_ripple">RIPPLE</string>
+    <string name="fx_heartbeat">HEARTBEAT</string>
+    <string name="fx_orbit">ORBIT</string>
+    <string name="fx_loading">LOADING</string>
+
     <string name="fx_spiral">SPIRAL</string>
+    <string name="fx_checkerboard">CHECKER</string>
+    <string name="fx_scanline">SCANLINE</string>
+    <string name="fx_bounce">BOUNCE</string>
+
     <string name="fx_starfield">STARFIELD</string>
     <string name="fx_rain">RAIN</string>
-    <string name="fx_heartbeat">HEARTBEAT</string>
-    <string name="fx_use_current">USE CURRENT DRAWING</string>
+    <string name="fx_matrix_rain">MATRIX</string>
+    <string name="fx_fire">FIRE</string>
+    <string name="fx_firework">FIREWORK</string>
+    <string name="fx_lightning">LIGHTNING</string>
+
+    <string name="fx_desc_breathing">Soft brightness rise and fall over the base drawing.</string>
+    <string name="fx_desc_pulse">Sharp on/off pulse with 60% duty cycle.</string>
+    <string name="fx_desc_fade">Smooth fade in and out with a short peak hold.</string>
+    <string name="fx_desc_shimmer">Random sparkle over the base drawing.</string>
+    <string name="fx_desc_plasma">Interfering sine waves — classic plasma.</string>
+    <string name="fx_desc_wave">Radial wave expanding from the centre.</string>
+    <string name="fx_desc_ripple">Multiple concentric rings, softer than wave.</string>
+    <string name="fx_desc_heartbeat">Beating heart pulse at the centre.</string>
+    <string name="fx_desc_orbit">Bright dot orbiting the centre.</string>
+    <string name="fx_desc_loading">Rotating arc — a loading spinner.</string>
+    <string name="fx_desc_spiral">Rotating spiral arms.</string>
+    <string name="fx_desc_checkerboard">Flashing 5×5 checkerboard pattern.</string>
+    <string name="fx_desc_scanline">Vertical line sweeping back and forth.</string>
+    <string name="fx_desc_bounce">A small ball bouncing around the matrix.</string>
+    <string name="fx_desc_starfield">Twinkling stars with different speeds.</string>
+    <string name="fx_desc_rain">Rain drops with short trails.</string>
+    <string name="fx_desc_matrix_rain">Matrix-style digital rain with long trails.</string>
+    <string name="fx_desc_fire">Flickering flame rising from the bottom.</string>
+    <string name="fx_desc_firework">Rocket launch then bright radial burst.</string>
+    <string name="fx_desc_lightning">Sudden bolt and lingering glow.</string>
+
+    <string name="fx_use_current">USE DRAWING AS BASE</string>
     <string name="fx_save">SAVE AS ANIMATION</string>
     <string name="fx_preview">PREVIEW</string>
+    <string name="fx_pause">PAUSE</string>
     <string name="fx_frames">FRAMES</string>
     <string name="fx_saved">Saved as new animation</string>
 
